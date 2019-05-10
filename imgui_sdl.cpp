@@ -1,9 +1,7 @@
 #include "imgui_sdl.h"
 
-#include "SDL.h"
-
-#include "imgui.h"
-
+#include <SDL2/SDL.h>
+#include <imgui/imgui.h>
 #include <map>
 #include <list>
 #include <cmath>
@@ -162,7 +160,7 @@ namespace
 
 		// Uniform color is identified by its color and the coordinates of the edges.
 		using UniformColorTriangleKey = std::tuple<uint32_t, int, int, int, int, int, int>;
-		// The generic triangle cache unfortunately has to be basically a full representation of the triangle. 
+		// The generic triangle cache unfortunately has to be basically a full representation of the triangle.
 		// This includes the (offset) vertex positions, texture coordinates and vertex colors.
 		using GenericTriangleVertexKey = std::tuple<int, int, double, double, uint32_t>;
 		using GenericTriangleKey = std::tuple<GenericTriangleVertexKey, GenericTriangleVertexKey, GenericTriangleVertexKey>;
@@ -597,7 +595,7 @@ namespace ImGuiSDL
 						const bool doesTriangleUseOnlyColor = bounding.UsesOnlyColor();
 
 						// Actually, since we render a whole bunch of rectangles, we try to first detect those, and render them more efficiently.
-						// How are rectangles detected? It's actually pretty simple: If all 6 vertices lie on the extremes of the bounding box, 
+						// How are rectangles detected? It's actually pretty simple: If all 6 vertices lie on the extremes of the bounding box,
 						// it's a rectangle.
 						if (i + 6 <= drawCommand->ElemCount)
 						{
